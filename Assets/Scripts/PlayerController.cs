@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public InputAction jumpAction;
     public float jumpForce = 10;
     public float gravityModifier;
+    public bool isOnGround = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,9 +20,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (jumpAction.triggered)
+        if (jumpAction.triggered && isOnGround)
         {
-            playerRb.AddForce(Vector3.up * 10, ForceMode.Impulse);
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        isOnGround = true;
     }
 }
