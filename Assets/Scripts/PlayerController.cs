@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10;
     public float gravityModifier;
     public bool isOnGround = true;
-    public bool gameOver;
+    public bool gameOver; //made public so other scripts access the player controller script to check if the game is over or not
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
